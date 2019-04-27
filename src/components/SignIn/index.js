@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-const SignIn = () => (
-    <h1>Sign In</h1>
-);
+import * as ROUTES from '../../constants/routes';
 
-export default SignIn;
+export default class SignIn extends Component {
+
+}
