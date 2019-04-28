@@ -67,7 +67,7 @@ class Firebase {
         //       // No user is signed in.
         //     }
         //   });
-        let user = this.firebase.auth().currentUser;
+        //let user = this.firebase.auth().currentUser;
         //console.log(this.firebase.auth());
         //console.log(user.uid);
         return userID;
