@@ -27,9 +27,13 @@ const NavigationAuth = () => (
                 </Button>
             </List.Item>
             <List.Item>
+                <Button basic color='purple'>
+                    <Link to={ROUTES.ACCOUNT}>Account</Link>
+                </Button>
+            </List.Item>
+            <List.Item>
                 <SignOutButton />
             </List.Item>
-            {/* Account Page */}
         </List>
     </ul>
 );
