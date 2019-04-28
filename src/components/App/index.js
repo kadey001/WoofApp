@@ -7,6 +7,7 @@ import SignIn from '../SignIn'
 import SignUp from '../SignUp'
 
 import * as ROUTES from '../../constants/routes'
+//import { withAuthentication } from '../Session';
 
 const App = () => (
     <Router>
