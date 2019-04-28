@@ -117,9 +117,8 @@ class Firebase {
         return users[0];
     };
     
-    getUID() {
-<<<<<<< HEAD
-        let userID = 'zNyK8BBPZhNGyePHXj3xQzMdjgB3';
+    //getUID() {
+        //let userID = 'zNyK8BBPZhNGyePHXj3xQzMdjgB3';
         // this.firebase.auth().onAuthStateChanged(function(user) {
         //     if (user) {
         //       userID = this.firebase.auth().currentUser.uid;
@@ -131,14 +130,8 @@ class Firebase {
         //let user = this.firebase.auth().currentUser;
         //console.log(this.firebase.auth());
         //console.log(user.uid);
-        return userID;
-    }
-=======
-        let user = firebase.auth().currentUser;
-        console.log(user.uid);
-        return user.uid;
-    };
->>>>>>> cc8c4d424f6773f7a1d871afdc7fed21077c8585
+        //return userID;
+    //}
 
     getUserByID(uid) {
         var docRef = this.db.collection('users').doc(uid);
