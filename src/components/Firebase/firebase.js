@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyDLWmvzBX36a7U2hCeSC4JiX2E_cAi1C78",
@@ -15,7 +16,18 @@ class Firebase {
         app.initializeApp(config);
 
         this.auth = app.auth();
+        this.fieldValue = app.firestore.FieldValue;
+        this.db = app.firestore();
     }
+
+    onAuthUserListener = (next, fallback) => this.auth.onAuthStateChanged(authUser => {
+        if(authUser) {
+            this.user(authUser.uid).get().then(snapshot => {
+                const dbUser = snapshot.data();
+            })
+        }
+    })
+
     // *** Auth API ***
 
     // doCreateUserWithGoogle = (provider) => this.auth.signInWithPopup(provider).then(function(result) {
@@ -35,6 +47,11 @@ class Firebase {
         this.auth.signInWithEmailAndPassword(email, password);
 
     doSignOut = () => this.auth.signOut();
+
+    //*** User API ***
+    user = uid => this.db.doc(`users/${uid}`);
+
+    users = () => this.db.collection('users');
 }
 
 export default Firebase;
