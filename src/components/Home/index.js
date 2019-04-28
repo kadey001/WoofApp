@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Button from '../shared/button'
-
+import { Button, Icon } from 'semantic-ui-react'
 
 export default class Home extends Component {
     state = {
@@ -19,8 +18,16 @@ export default class Home extends Component {
   render() {
     return (
         <div>
-        <h1>Home</h1>
-        <Button color="red" onClick={this.handleClick}>{this.state.username}</Button>
+        <h1 align="center">Home</h1>
+        <body>
+        <img src= {require("./test_images/dog2.jpeg")} width="40%" height="40%" alt="Dog" class='center'></img>
+        </body>
+        <Button icon size="massive">
+          <Icon name="paw icon"></Icon>
+        </Button>
+        <Button icon size="massive">
+          <Icon name="close icon"></Icon>
+        </Button>
     </div>
     )
   }
