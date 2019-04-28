@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import firebase from 'firebase';
 //const google = require('googleapis'); 
 
 //const messaging = firebase.messaging();
@@ -57,27 +58,76 @@ class Firebase {
 
     users = () => this.db.collection('users');
 
+    snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach((childSnapshot) => {
+            var item = childSnapshot.val();
+            item.key = childSnapshot.key;
+
+            returnArr.push(item);
+        });
+
+        return returnArr;
+    };
+
+    async getUserList() {
+        let users = [];
+
+        // const snapshot = await this.db.collection('users').get()
+        // .then(function(querySnapshot) {
+        //     querySnapshot.forEach(function(doc) {
+        //         console.log(doc.id, " => ", doc.data())
+        //         //users.push(doc.id);
+        //     });
+        // });
+
+        this.db.collection('users').get().then(querySnapshot => {
+            querySnapshot.docs.forEach(doc => {
+                users.push(doc.data());
+            })
+        })
+
+        //console.log("Snapshot: " + snapshot.val());
+        return await users;
+    };
+    
+    getRandomUser() {
+        let users = this.getUserList();
+
+        //let users = this.snapshotToArray(snapshot);
+
+        // snapshot.forEach(function(doc) {
+        //     users.push(doc.id)
+        // });
+        // this.db.collection('users').get()
+        // .then(function(querySnapshot) {
+        //     querySnapshot.forEach(function(doc) {
+        //         console.log(doc.id, " => ", doc.data())
+        //         users.push(doc.id);
+        //     });
+        // });
+        //console.log("Snapshot: " + snapshot.docs.map(doc => doc.data()));
+        console.log(users[0]);
+
+        //let user = users[Math.floor(Math.random()*users.length)];
+        //let user = users[0];
+
+        //console.log(users);
+        return users[0];
+    };
+    
     getUID() {
-        let userID = 'zNyK8BBPZhNGyePHXj3xQzMdjgB3';
-        // this.firebase.auth().onAuthStateChanged(function(user) {
-        //     if (user) {
-        //       userID = this.firebase.auth().currentUser.uid;
-        //     } else {
-        //         userID = null;
-        //       // No user is signed in.
-        //     }
-        //   });
-        let user = this.firebase.auth().currentUser;
-        //console.log(this.firebase.auth());
-        //console.log(user.uid);
-        return userID;
-    }
+        let user = firebase.auth().currentUser;
+        console.log(user.uid);
+        return user.uid;
+    };
 
     getUserByID(uid) {
         var docRef = this.db.collection('users').doc(uid);
 
         return docRef.get();
-    }
+    };
 }
 
 export default Firebase;

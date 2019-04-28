@@ -11,15 +11,15 @@ class Account extends Component {
 
     componentDidMount () {
         //let uid = this.props.firebase.getUID();
-        this.props.firebase.getUserByID(this.props.firebase.getUID()).then((doc) => {
+        let uid = this.props.firebase.getRandomUser();
+        this.props.firebase.getUserByID(uid).then((doc) => {
             this.setState({account:doc.data()})
         })
     }
 
     render () {
-        console.log(this.props.firebase)
         if(this.state.account) {
-            console.log(this.state.account);
+            //console.log(this.state.account);
             return <container>
                     <div>{this.state.account.email}</div>
                     <div>{this.state.account.username}</div>
