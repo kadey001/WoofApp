@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from '../Navigation';
@@ -7,20 +7,45 @@ import SignIn from '../SignIn'
 import SignUp from '../SignUp'
 
 import * as ROUTES from '../../constants/routes'
+import { withFirebase } from '../Firebase';
 //import { withAuthentication } from '../Session';
 
-const App = () => (
-    <Router>
-        <div>
-            <Navigation />
+class App extends Component {
+    constructor(props) {
+        super(props);
 
-            <hr />
+        this.state = {
+            authUser: null,
+        };
+    }
 
-            <Route path={ROUTES.HOME} component={Home} exact/>
-            <Route path={ROUTES.SIGN_UP} component={SignUp} />
-            <Route path={ROUTES.SIGN_IN} component={SignIn} />
-        </div>
-    </Router>
-);
+    componentDidMount() {
+        this.listener = this.props.firebase.auth.onAuthStateChanged(authUser => {
+            authUser 
+            ? this.setState({ authUser })
+            : this.setState({ authUser: null })
+        },);
+    }
 
-export default App;
+    componentWillUnmount() {
+        this.listener();
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <Navigation authUser={this.state.authUser} />
+
+                    <hr />
+
+                    <Route path={ROUTES.HOME} component={Home} exact/>
+                    <Route path={ROUTES.SIGN_UP} component={SignUp} />
+                    <Route path={ROUTES.SIGN_IN} component={SignIn} />
+                </div>
+            </Router>
+        );
+    }
+}
+
+export default withFirebase(App);
