@@ -5,9 +5,11 @@ import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
 
-import { List } from 'semantic-ui-react';
+import { List, Container } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
+import { Image } from 'semantic-ui-react';
+
 
 const Navigation = () => (
     <div>
@@ -20,6 +22,9 @@ const Navigation = () => (
 const NavigationAuth = () => (
     <ul>
         <List horizontal>
+            <List.Item>
+                <Image src= {require("./Pictures/title.png")} alt="Title" size= "small" centered/>
+            </List.Item>
             <List.Item>
                 <Button icon labelPosition= 'left' basic color='green'>
                     <Icon name='home icon'></Icon>
@@ -36,11 +41,18 @@ const NavigationAuth = () => (
                 <SignOutButton />
             </List.Item>
         </List>
+            <Image src= {require("./Pictures/Soulwoof.png")} alt="Title" size= "tiny" floated='right'/>
+
+
     </ul>
 );
 
 const NavigationNonAuth = () => (
+    
     <List horizontal>
+        <List.Item>
+            <Image src= {require("./Pictures/title.png")} alt="Title" size= "small" centered/>
+        </List.Item>
         <List.Item>
             <Button icon labelPosition= 'left' basic color='blue'>
                 <Icon name='sign in icon'></Icon>

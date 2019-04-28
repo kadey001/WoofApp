@@ -6,12 +6,12 @@ import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-import { Button } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 
 const SignInPage = () => (
     <div>
-        <h1>SignIn</h1>
+        <h1>Sign In</h1>
         <SignInForm />
         <SignUpLink />
     </div>
@@ -60,25 +60,33 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <Input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <Input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <Button className="ui button" type="submit" secondary disabled={isInvalid}>Sign In</Button>
+            <Form>
+                <form onSubmit={this.onSubmit}>
+                    <Form.Field width = '3'>
+                        <label>Email</label>
+                    <Input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    </Form.Field>
+                    <Form.Field width = '3'>
+                        <label>Password</label>
+                    <Input
+                        name="password"
+                        value={password}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    </Form.Field>
+                    <Button className="ui button" type="submit" secondary disabled={isInvalid}>Sign In</Button>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                    {error && <p>{error.message}</p>}
+                </form>
+            </Form>
         );
     }
 }

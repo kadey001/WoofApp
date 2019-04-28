@@ -5,12 +5,11 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
-import { Button } from 'semantic-ui-react'
-import { Input } from 'semantic-ui-react'
+import { Button, Input, Form} from 'semantic-ui-react'
 
 const SignUpPage = () => (
     <div>
-        <h1>SignUp</h1>
+        <h1>Sign Up</h1>
         <SignUpForm />
     </div>
 );
@@ -71,32 +70,43 @@ class SignUpFormBase extends Component {
             username === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <Input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Dog's Name"
-                />
-                <Input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <Input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <Button className="ui button" type="submit" secondary disabled={isInvalid}>Sign Up</Button>
+            <Form>
+                <form onSubmit={this.onSubmit}>
+                    <Form.Field width = '3'>
+                        <label>Username</label>
+                    <Input
+                        name="username"
+                        value={username}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Dog's Name"
+                    />
+                    </Form.Field>
+                    <Form.Field width = '3'>
+                        <label>Email</label>
+                    <Input
+                        name="email"
+                        value={email}
+                        onChange={this.onChange}
+                        type="text"
+                        placeholder="Email Address"
+                    />
+                    </Form.Field>
+                    <Form.Field width = '3'>
+                        <label>Password</label>
+                    <Input
+                        name="password"
+                        value={password}
+                        onChange={this.onChange}
+                        type="password"
+                        placeholder="Password"
+                    />
+                    </Form.Field>
+                    <Button className="ui button" type="submit" secondary disabled={isInvalid}>Sign Up</Button>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                    {error && <p>{error.message}</p>}
+                </form>
+            </Form>
         );
     }
 }
