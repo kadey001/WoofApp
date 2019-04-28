@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
+import { AuthUserContext } from '../Session';
 
 import { List } from 'semantic-ui-react';
 import { Button } from 'semantic-ui-react';
 import { Icon } from 'semantic-ui-react';
 
-const Navigation = ({ authUser }) => (
-    <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+const Navigation = () => (
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser => authUser ? <NavigationAuth /> : <NavigationNonAuth />}
+        </AuthUserContext.Consumer>
+    </div>
 );
 
 const NavigationAuth = () => (
@@ -33,7 +38,6 @@ const NavigationNonAuth = () => (
     <List horizontal>
         <List.Item>
             <Button icon labelPosition= 'left' basic color='blue'>
-                
                 <Icon name='sign in icon'></Icon>
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </Button>
