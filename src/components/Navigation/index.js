@@ -22,20 +22,22 @@ const Navigation = () => (
 const NavigationAuth = () => (
     <ul>
         <List horizontal>
+                <List.Item>
+                    <Image src= {require("./Pictures/title.png")} alt="Title" size= "small" centered/>
+                </List.Item>
+                <List.Item>
+                    <Link to={ROUTES.HOME}>
+                        <Button icon labelPosition= 'left' inverted color= 'pink'>
+                            <Icon name='home icon'></Icon>Home
+                        </Button>
+                    </Link>           
+                </List.Item>
             <List.Item>
-                <Image src= {require("./Pictures/title.png")} alt="Title" size= "small" centered/>
-            </List.Item>
-            <List.Item>
-                <Button icon labelPosition= 'left' basic color='green'>
-                    <Icon name='home icon'></Icon>
-                    <Link to={ROUTES.HOME}>Home</Link>
+            <Link to={ROUTES.ACCOUNT}>
+                <Button icon labelPosition= 'left' inverted color='purple'>
+                    <Icon name='user icon'></Icon>Account
                 </Button>
-            </List.Item>
-            <List.Item>
-                <Button icon labelPosition= 'left' basic color='purple'>
-                    <Icon name='user icon'></Icon>
-                    <Link to={ROUTES.ACCOUNT}>Account</Link>
-                </Button>
+                </Link>
             </List.Item>
             <List.Item>
                 <SignOutButton />
@@ -54,16 +56,20 @@ const NavigationNonAuth = () => (
             <Image src= {require("./Pictures/title.png")} alt="Title" size= "small" centered/>
         </List.Item>
         <List.Item>
-            <Button icon labelPosition= 'left' basic color='blue'>
+            <Link to={ROUTES.SIGN_IN}>
+            <Button icon labelPosition= 'left' inverted color='blue'>
                 <Icon name='sign in icon'></Icon>
-                <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+                Sign in
             </Button>
+            </Link>
         </List.Item>
         <List.Item>
-            <Button icon labelPosition= 'left' basic color='teal'>
+            <Link to={ROUTES.SIGN_UP}>
+            <Button icon labelPosition= 'left' inverted color='teal'>
                 <Icon name='signup icon'></Icon>
-                <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+                Sign Up
                 </Button>
+                </Link>
         </List.Item>
     </List>
 );
