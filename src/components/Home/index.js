@@ -1,22 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { withAuthorization } from '../Session';
+
 import { Button, Icon } from 'semantic-ui-react'
 
-export default class Home extends Component {
-    state = {
-        username: ''
-    }
-
-    componentDidMount() {
-      const username = "Bobo"
-      this.setState({username})
-    }
-
-    handleClick = () => {
-        this.setState({username: 'Alice'})
-    }
-    
-  render() {
-    return (
+const Home = () => (
         <div>
         <h1 align="center">Home</h1>
         <body>
@@ -29,6 +16,8 @@ export default class Home extends Component {
           <Icon name="close icon"></Icon>
         </Button>
     </div>
-    )
-  }
-}
+);
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(Home);
