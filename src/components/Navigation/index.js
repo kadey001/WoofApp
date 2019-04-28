@@ -32,13 +32,13 @@ const NavigationAuth = () => (
                         </Button>
                     </Link>           
                 </List.Item>
-            <List.Item>
+            {/* <List.Item>
             <Link to={ROUTES.ACCOUNT}>
                 <Button icon labelPosition= 'left' inverted color='purple'>
                     <Icon name='user icon'></Icon>Account
                 </Button>
                 </Link>
-            </List.Item>
+            </List.Item> */}
             <List.Item>
                 <SignOutButton />
             </List.Item>
