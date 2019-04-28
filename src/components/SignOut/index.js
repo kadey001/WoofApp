@@ -6,7 +6,7 @@ import { Button } from 'semantic-ui-react'
 import { Icon } from 'semantic-ui-react'
 
 const SignOutButton = ({ firebase }) => (
-    <Button icon labelPosition= 'left' basic color='red' onClick={firebase.doSignOut}>
+    <Button icon labelPosition= 'left' inverted color='red' onClick={firebase.doSignOut}>
         <Icon name='log out'></Icon>
         Log Out
     </Button>
