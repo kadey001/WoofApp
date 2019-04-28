@@ -27,7 +27,8 @@ const NavigationAuth = () => (
                 </Button>
             </List.Item>
             <List.Item>
-                <Button basic color='purple'>
+                <Button icon labelPosition= 'left' basic color='purple'>
+                    <Icon name='user icon'></Icon>
                     <Link to={ROUTES.ACCOUNT}>Account</Link>
                 </Button>
             </List.Item>
