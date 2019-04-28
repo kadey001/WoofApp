@@ -20,7 +20,7 @@ export default class Home extends Component {
         <div>
         <h1 align="center">Home</h1>
         <body>
-        <img src= {require("./test_images/dog2.jpeg")} width="40%" height="40%" alt="Dog" class='center'></img>
+        <img src= {require("./test_images/dog2.jpeg")} alt="Dog" class='center'></img>
         </body>
         <Button icon size="massive">
           <Icon name="paw icon"></Icon>
