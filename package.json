@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "firebase": "^5.10.1",
+    "googleapis": "^39.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",

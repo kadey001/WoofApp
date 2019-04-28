@@ -1,6 +1,10 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+//const google = require('googleapis'); 
+
+//const messaging = firebase.messaging();
+//messaging.usePublicVapidKey("BNL1Sl4J-SG1J_WbjBhkplCe13vdc3_tuJpYzlR9uBUMKaG6k8OEbmp0WifQeUPQ3SV_tZnUK5FDVj8YkTVKW9Q");
 
 const config = {
     apiKey: "AIzaSyDLWmvzBX36a7U2hCeSC4JiX2E_cAi1C78",
@@ -52,6 +56,28 @@ class Firebase {
     user = uid => this.db.doc(`users/${uid}`);
 
     users = () => this.db.collection('users');
+
+    getUID() {
+        let userID = 'zNyK8BBPZhNGyePHXj3xQzMdjgB3';
+        // this.firebase.auth().onAuthStateChanged(function(user) {
+        //     if (user) {
+        //       userID = this.firebase.auth().currentUser.uid;
+        //     } else {
+        //         userID = null;
+        //       // No user is signed in.
+        //     }
+        //   });
+        let user = this.firebase.auth().currentUser;
+        //console.log(this.firebase.auth());
+        //console.log(user.uid);
+        return userID;
+    }
+
+    getUserByID(uid) {
+        var docRef = this.db.collection('users').doc(uid);
+
+        return docRef.get();
+    }
 }
 
 export default Firebase;
