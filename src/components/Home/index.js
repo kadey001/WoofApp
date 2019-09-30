@@ -217,10 +217,6 @@ function nextPic(){
   counter += 1;
 }
 
-
-
-  
-
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(Home);
